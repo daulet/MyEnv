@@ -1,4 +1,8 @@
-if (-Not (Get-Command choco -errorAction SilentlyContinue))
+if (Get-Command choco -errorAction SilentlyContinue)
+{
+    return $true;
+}
+else
 {
     # More info: https://chocolatey.org/install
 

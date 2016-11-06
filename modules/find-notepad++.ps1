@@ -15,12 +15,11 @@ function Find-InstallationPath
 $installationPath = Find-InstallationPath;
 if ($installationPath -eq $null)
 {
-    Write-Host $installationPath;
-    if (. .\modules\test-chocolatey.ps1)
+    if (.\test-chocolatey.ps1)
     {
         choco install notepadplusplus;
+
+        $installationPath = Find-InstallationPath;
     }
 }
-$installationPath = Find-InstallationPath;
-
 return $installationPath;

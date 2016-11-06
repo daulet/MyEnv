@@ -1,4 +1,5 @@
-if (-Not (Get-Module -ListAvailable -Name ZLocation)) {
+if (-Not (Get-Module -ListAvailable -Name ZLocation))
+{
     Install-Module ZLocation -Scope CurrentUser
 }
 

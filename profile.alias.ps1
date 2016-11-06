@@ -6,7 +6,7 @@ $config = @{
 
 function Add-Alias($alias, $path)
 {
-    if (Test-Path $path)
+    if (($path -ne $null) -and (Test-Path $path))
     {
         Set-Alias -Scope Global $alias $path;
     }
