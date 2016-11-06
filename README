@@ -1,0 +1,5 @@
+Add the following line to powershell profile (notepad $PROFILE):
+
+. $pathToMyEnv\profile.ps1
+
+where $pathToMyEnv is path to you clone of MyEnv
