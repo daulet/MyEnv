@@ -1,20 +1,10 @@
-# VS Code only has x86 flavor
-$installationPath = "${env:ProgramFiles(x86)}\Microsoft VS Code\Code.exe";
+. $PsScriptRoot\test-platform.ps1
 
-# install if necessary
-if (-Not (Test-Path $installationPath))
+if (Get-CurrentPlatform -eq [Platform]::Windows)
 {
-    if (.\test-chocolatey.ps1)
-    {
-        choco install visualstudiocode;
-    }
+    return . $PsScriptRoot\find-vscode.windows.ps1
 }
-
-if (Test-Path $installationPath)
+else    
 {
-    return $installationPath;
-}
-else
-{
-    return $null;
+    return . $PsScriptRoot\find-vscode.macos.ps1
 }

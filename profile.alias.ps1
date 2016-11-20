@@ -10,10 +10,6 @@ function Add-Alias($alias, $path)
     {
         Set-Alias -Scope Global $alias $path;
     }
-    else
-    {
-        Write-Warning "Path for alias $alias doesn't exist: $path";
-    }
 }
 
 $config.GetEnumerator() | % { Add-Alias $_.Key $_.Value }
