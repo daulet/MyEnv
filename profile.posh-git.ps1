@@ -10,11 +10,11 @@ Import-Module posh-git
 function global:prompt {
     $realLASTEXITCODE = $LASTEXITCODE
 
-    $GitPromptSettings.BeforeText = "> ["
+    $GitPromptSettings.BeforeText = " ["
     $GitPromptSettings.AfterText = "] `n"
     
-    Write-VcsStatus
     Write-Host "$(Get-Date -Format HH:MM:ss) $pwd" -NoNewline
+    Write-VcsStatus
 
     $global:LASTEXITCODE = $realLASTEXITCODE
     return "> "
