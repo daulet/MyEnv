@@ -4,7 +4,7 @@ $installationPath = "${env:ProgramFiles(x86)}\Microsoft VS Code\Code.exe";
 # install if necessary
 if (-Not (Test-Path $installationPath))
 {
-    if (.\test-chocolatey.ps1)
+    if (. $PsScriptRoot\test-chocolatey.ps1)
     {
         choco install visualstudiocode;
     }

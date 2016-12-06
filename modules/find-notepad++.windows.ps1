@@ -15,7 +15,7 @@ function Find-InstallationPath
 $installationPath = Find-InstallationPath;
 if ($installationPath -eq $null)
 {
-    if (.\test-chocolatey.ps1)
+    if (. $PsScriptRoot\test-chocolatey.ps1)
     {
         choco install notepadplusplus;
 

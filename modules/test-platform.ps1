@@ -6,8 +6,7 @@ enum Platform
 
 function Get-CurrentPlatform
 {
-    # based on "ver" command of cmd.exe
-    if (Get-Command ver -errorAction SilentlyContinue)
+    if ((Get-WmiObject -Class Win32_OperatingSystem | Select-Object -First 1).Caption -like '*Windows*')
     {
         return [Platform]::Windows;
     }

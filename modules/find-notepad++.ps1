@@ -2,7 +2,7 @@
 
 if (Get-CurrentPlatform -eq [Platform]::Windows)
 {
-    return .\find-notepad++.windows.ps1
+    return . $PsScriptRoot\find-notepad++.windows.ps1
 }
 else    
 {
