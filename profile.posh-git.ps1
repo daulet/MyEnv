@@ -7,17 +7,22 @@ if (-Not (Get-Module -ListAvailable -Name posh-git)) {
 # Load posh-git module from default location
 Import-Module posh-git
 
-function global:prompt {
-    $realLASTEXITCODE = $LASTEXITCODE
+$GitPromptSettings.BeforeText = '['
+$GitPromptSettings.AfterText = '] '
 
-    $GitPromptSettings.BeforeText = " ["
-    $GitPromptSettings.AfterText = "] `n"
-    
-    Write-Host "$(Get-Date -Format HH:MM:ss) $pwd" -NoNewline
+function global:prompt {
+    $origLastExitCode = $LASTEXITCODE
     Write-VcsStatus
 
-    $global:LASTEXITCODE = $realLASTEXITCODE
-    return "> "
+    $maxPathLength = 40
+    $curPath = $ExecutionContext.SessionState.Path.CurrentLocation.Path
+    if ($curPath.Length -gt $maxPathLength) {
+        $curPath = '...' + $curPath.SubString($curPath.Length - $maxPathLength + 3)
+    }
+    Write-Host $curPath -ForegroundColor Green
+
+    $LASTEXITCODE = $origLastExitCode
+    "$(Get-Date -Format HH:MM:ss)$('>' * ($nestedPromptLevel + 1)) "
 }
 
 Pop-Location
