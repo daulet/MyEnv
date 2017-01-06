@@ -19,7 +19,7 @@ function global:prompt {
     if ($curPath.Length -gt $maxPathLength) {
         $curPath = '...' + $curPath.SubString($curPath.Length - $maxPathLength + 3)
     }
-    Write-Host $curPath -ForegroundColor Green
+    Write-Host $curPath -ForegroundColor Cyan
 
     $LASTEXITCODE = $origLastExitCode
     "$(Get-Date -Format HH:MM:ss)$('>' * ($nestedPromptLevel + 1)) "
