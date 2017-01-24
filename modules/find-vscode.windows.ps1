@@ -6,7 +6,7 @@ if (-Not (Test-Path $installationPath))
 {
     if (. $PsScriptRoot\test-chocolatey.ps1)
     {
-        choco install visualstudiocode;
+        choco install visualstudiocode --confirm;
     }
 }
 

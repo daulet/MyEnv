@@ -4,9 +4,9 @@ $config = @{
     'vs' = .\modules\find-vscode.ps1;
 }
 
-function Add-Alias($alias, $path)
+function Add-Alias($alias, [string]$path)
 {
-    if (($path -ne $null) -and (Test-Path $path))
+    if (($path) -and (Test-Path $path))
     {
         Set-Alias -Scope Global $alias $path;
     }

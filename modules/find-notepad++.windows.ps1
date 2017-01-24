@@ -17,7 +17,7 @@ if ($installationPath -eq $null)
 {
     if (. $PsScriptRoot\test-chocolatey.ps1)
     {
-        choco install notepadplusplus;
+        choco install notepadplusplus --confirm;
 
         $installationPath = Find-InstallationPath;
     }

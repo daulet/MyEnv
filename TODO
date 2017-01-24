@@ -1,1 +1,0 @@
-chocolatey installation prompt user, which won't work on profile loading since prompt doesn't render on the screen
