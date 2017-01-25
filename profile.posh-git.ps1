@@ -1,6 +1,7 @@
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
 if (-Not (Get-Module -ListAvailable -Name posh-git)) {
+    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
     Install-Module posh-git
 }
 
