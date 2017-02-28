@@ -10,7 +10,7 @@ if ($EnvFilePath -eq $null) {
 function Merge-Path($OldPath, $IncPath)
 {
   $MergedPath = ($IncPath -split ";") + ($OldPath -split ';') `
-  |? {$_.Trim().Length -gt 0} `
+  | Where-Object {$_.Trim().Length -gt 0} `
   | Select-Object -Unique
 
   $NewPath = $MergedPath -join ";"
@@ -31,7 +31,7 @@ if (-not (Test-Path $TempFilePath)) {
   return
 }
 
-$lines = cat $TempFilePath
+$lines = Get-Content $TempFilePath
 Remove-Item -Force $TempFilePath
 
 Write-Host "Importing $($lines.Count) environment variables" -Foreground Blue
