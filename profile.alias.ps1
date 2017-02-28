@@ -12,4 +12,4 @@ function Add-Alias($alias, [string]$path)
     }
 }
 
-$config.GetEnumerator() | % { Add-Alias $_.Key $_.Value }
+$config.GetEnumerator() | ForEach-Object { Add-Alias $_.Key $_.Value }
