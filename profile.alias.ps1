@@ -1,15 +1,11 @@
-# Setup aliases
+# Setup alias for Set-Directory command
+. .\modules\set-directory.ps1
+Set-Alias -Scope Global 'c' (Get-Command Set-Directory).Name
+
+# Setup aliases for common paths
+. .\modules\set-pathalias.ps1
 $config = @{
     'sn' = .\modules\find-notepad++.ps1;
     'vs' = .\modules\find-vscode.ps1;
 }
-
-function Add-Alias($alias, [string]$path)
-{
-    if (($path) -and (Test-Path $path))
-    {
-        Set-Alias -Scope Global $alias $path;
-    }
-}
-
-$config.GetEnumerator() | ForEach-Object { Add-Alias $_.Key $_.Value }
+$config.GetEnumerator() | ForEach-Object { Set-PathAlias $_.Key $_.Value }

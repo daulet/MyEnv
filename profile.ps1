@@ -4,7 +4,7 @@ Push-Location $PsScriptRoot
 . .\modules\tabexpansion.ps1
 
 # Load aliases
-.\profile.alias.ps1
+. .\profile.alias.ps1
 
 # Load command line environment
 .\profile.cmd.ps1
