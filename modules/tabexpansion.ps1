@@ -7,6 +7,8 @@ if (Test-Path Function:\TabExpansion) {
 
 $expandable_commands = "c", "cd", "sn", "vs"
 
+# FF is a Fast File Finder. Source: https://github.com/Wintellect/FastFileFinder
+
 function TabExpansion($line, $lastWord) {
     $words = $line.Split(' ', [System.StringSplitOptions]::RemoveEmptyEntries)
 
