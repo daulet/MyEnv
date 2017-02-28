@@ -1,5 +1,8 @@
 Push-Location $PsScriptRoot
 
+# Setup tab expansion for file search
+. .\modules\tabexpansion.ps1
+
 # Load aliases
 .\profile.alias.ps1
 
