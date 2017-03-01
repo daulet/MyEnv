@@ -12,7 +12,9 @@ $GitPromptSettings.BeforeText = '['
 $GitPromptSettings.AfterText = '] '
 
 function global:prompt {
+    $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
     $origLastExitCode = $LASTEXITCODE
+
     Write-VcsStatus
 
     $maxPathLength = 40
@@ -22,8 +24,10 @@ function global:prompt {
     }
     Write-Host $curPath -ForegroundColor Cyan
 
+    "[$([Math]::Round($stopwatch.Elapsed.TotalMilliseconds)) ms] $(Get-Date -Format HH:MM:ss)$('>' * ($nestedPromptLevel + 1)) "
+
     $LASTEXITCODE = $origLastExitCode
-    "$(Get-Date -Format HH:MM:ss)$('>' * ($nestedPromptLevel + 1)) "
+    $stopwatch.Stop()
 }
 
 Pop-Location
