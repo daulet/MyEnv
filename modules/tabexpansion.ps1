@@ -13,7 +13,7 @@ function TabExpansion($line, $lastWord) {
     $words = $line.Split(' ', [System.StringSplitOptions]::RemoveEmptyEntries)
 
     if ($expansionPrefixes -contains $words[0]) {
-        $ff = Join-Path $PsScriptRoot "ff.exe"
+        $ff = . $PsScriptRoot\find-fastfilefinder.ps1
         $paths = & $ff $words[-1] -nostats
         return $paths
     }
