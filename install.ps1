@@ -36,6 +36,11 @@ if (Test-Path($MyEnvProfile)) {
 '@
 
 $profileFile = "$PROFILE"
+
+if (-Not (Test-Path $profileFile)) {
+    New-item -type file -force $profileFile
+}
+
 if(Select-String -Path $profileFile -Pattern $myEnvProfileSearch -Quiet -SimpleMatch) {
     Write-Debug "MyEnv profile is already installed."
 }
