@@ -1,3 +1,5 @@
+$version = "v1"
+
 #Requires -RunAsAdministrator
 
 # Adapted from http://www.west-wind.com/Weblog/posts/197245.aspx
@@ -27,8 +29,8 @@ if ($myEnvPath -eq $null -or $myEnvPath -eq '') {
 
 # value appears in $profileInstall
 $myEnvProfileSearch = '$MyEnvProfile'
-$profileInstall = @'
-# Load profiles from MyEnv
+$profileInstall =
+"# Load profiles from MyEnv: https://github.com/daulet/myenv $version `n" + @'
 $MyEnvProfile = "$env:MyEnvInstall\profile.ps1"
 if (Test-Path($MyEnvProfile)) {
   Import-Module "$MyEnvProfile"
@@ -41,7 +43,8 @@ if (-Not (Test-Path $profileFile)) {
     New-item -type file -force $profileFile
 }
 
-if(Select-String -Path $profileFile -Pattern $myEnvProfileSearch -Quiet -SimpleMatch) {
+$versions = Select-String -Path $profileFile -Pattern "https://github.com/daulet/myenv v(\d+)"
+if ($versions.Matches.Count -gt 0 -and $versions.Matches[-1].Groups[1].Value -eq $version) {
     Write-Debug "MyEnv profile is already installed."
 }
 else {

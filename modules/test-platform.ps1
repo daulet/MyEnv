@@ -1,7 +1,7 @@
 enum Platform
 {
     macOS = 0
-    Windows = 1   
+    Windows = 1
 }
 
 function Get-CurrentPlatform

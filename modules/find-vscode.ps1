@@ -4,7 +4,7 @@ if (Get-CurrentPlatform -eq [Platform]::Windows)
 {
     return . $PsScriptRoot\find-vscode.windows.ps1
 }
-else    
+else
 {
     return . $PsScriptRoot\find-vscode.macos.ps1
 }

@@ -7,11 +7,11 @@ else
     # More info: https://chocolatey.org/install
 
     # installation requires admin rights to install
-    if ([bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544"))
-    {    
+    If (([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
+    {
         # installation requires at least RemoteSigned execution policy
         Set-ExecutionPolicy RemoteSigned
-        
+
         iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
         return $true;

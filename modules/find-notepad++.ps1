@@ -4,7 +4,7 @@ if (Get-CurrentPlatform -eq [Platform]::Windows)
 {
     return . $PsScriptRoot\find-notepad++.windows.ps1
 }
-else    
+else
 {
     Write-Host "Notepad++ is not supported on this platform"
     return $null
