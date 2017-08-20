@@ -27,8 +27,6 @@ if ($myEnvPath -eq $null -or $myEnvPath -eq '') {
   [Environment]::SetEnvironmentVariable($myEnvInstallVariableName, $PSScriptRoot, "Machine")
 }
 
-# value appears in $profileInstall
-$myEnvProfileSearch = '$MyEnvProfile'
 $profileInstall =
 "# Load profiles from MyEnv: https://github.com/daulet/myenv $version `n" + @'
 $MyEnvProfile = "$env:MyEnvInstall\profile.ps1"
