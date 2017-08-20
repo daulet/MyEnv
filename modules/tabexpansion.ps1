@@ -7,14 +7,26 @@ if (Test-Path Function:\TabExpansion) {
     Rename-Item Function:\TabExpansion MyEnvTabExpansionBackup
 }
 
-# FF is a Fast File Finder. Source: https://github.com/Wintellect/FastFileFinder
+# FF is a Fast File Finder. Source: https://github.com/daulet/FastFileFinder
 
 function TabExpansion($line, $lastWord) {
+    $matchInCurrentDir = $False
+
     $words = $line.Split(' ', [System.StringSplitOptions]::RemoveEmptyEntries)
 
-    if ($expansionPrefixes -contains $words[0]) {
+    # Test current directory before kicking off potentially expensive recursive search
+    $currentDir = Get-ChildItem
+    $prefix = $words[-1].ToLower()
+    foreach ($file in $currentDir) {
+        if ($file.Name.ToLower().StartsWith($prefix)) {
+            $matchInCurrentDir = $True
+            break
+        }
+    }
+
+    if (-Not $matchInCurrentDir -And ($expansionPrefixes -contains $words[0])) {
         $ff = . $PsScriptRoot\find-fastfilefinder.ps1
-        $paths = & $ff $words[-1] -nostats
+        $paths = & $ff -includedir -nostats $words[-1]
         return $paths
     }
     else {
