@@ -1,4 +1,5 @@
-param ([string[]]$expansionPrefixes)
+param (
+    [string[]]$expansionPrefixes)
 
 if (Test-Path Function:\TabExpansion) {
     if (Test-Path Function:\MyEnvTabExpansionBackup) {

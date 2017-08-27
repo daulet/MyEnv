@@ -1,10 +1,7 @@
-. $PsScriptRoot\test-platform.ps1
+# Latest VS Code defaults to x64 flavor
+$installationPath = "${env:ProgramFiles}\Microsoft VS Code\Code.exe";
 
-if (Get-CurrentPlatform -eq [Platform]::Windows)
-{
-    return . $PsScriptRoot\find-vscode.windows.ps1
+if (Test-Path $installationPath) {
+    return $installationPath;
 }
-else
-{
-    return . $PsScriptRoot\find-vscode.macos.ps1
-}
+return $null;

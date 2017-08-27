@@ -1,7 +1,6 @@
-# navigate to the parent directory of the file 
+# navigate to the parent directory of the file
 
-function Set-Directory($path)
-{
+function Set-Directory($path) {
     if (Test-Path $path -PathType Container) {
         Set-Location $path
     }

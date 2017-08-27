@@ -4,10 +4,10 @@ Push-Location $PsScriptRoot
 . .\profile.alias.ps1
 
 # Setup command line environment
-.\profile.cmd.ps1
+. .\profile.cmd.ps1
 
-# Setup posh-git profile
-.\profile.posh-git.ps1
+# Setup prompt
+. .\profile.prompt.ps1
 
 # Setup tab expansion
 . .\profile.tabexpansion.ps1

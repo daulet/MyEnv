@@ -4,9 +4,10 @@ I'd like to be able to wipe my machine often. I don't like spending time setting
 
 ## Install
 
+Choco packages are defined in *dev.json*, pass it in to the installer (requires admin powershell):
+
 ```powershell
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
-.\install.ps1
+.\install.ps1 .\config\dev.json
 ```
 
 ## Features
@@ -27,7 +28,7 @@ The following tools are automatically installed, with aliases (shortcuts) for ea
 
 * Visual Studio Code (shortcut: 'vs')
 * Notepad++ (shortcut: 'sn', as in 'Show Notepad')
-* Nuget
+* See full list in [dev.json](.\config\dev.json)
 
 ---
 
@@ -37,4 +38,4 @@ Nothing spectacular, here is what is preconfigured:
 
 * Git status - uses posh-git module, installed and preconfigured for convenience.
 * Timestamp - useful when you trigger long running command, but forget to time it.
-* Duration - since this prompt is not trivial, it is important to actually track how long it took to generate the prompt.
+* Duration - since this prompt is not trivial, it is important to actually track the time it took to generate the prompt.

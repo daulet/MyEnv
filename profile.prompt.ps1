@@ -1,9 +1,9 @@
-Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
-
 if (-Not (Get-Module -ListAvailable -Name posh-git)) {
-    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-    Install-Module posh-git
+    Write-Debug "posh-git module is not installed, not modifying the prompt"
+    return
 }
+
+Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
 # Load posh-git module from default location
 Import-Module posh-git

@@ -1,11 +1,9 @@
-. $PsScriptRoot\test-platform.ps1
+# Find installation path to Notepad++ based on registry key for uninstalling it
+$matchingInstalls = Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* `
+    | Where-Object {$_.DisplayName -ne $null -and $_.DisplayName.StartsWith("Notepad++") } `
+    | Select-Object DisplayName, DisplayIcon;
 
-if (Get-CurrentPlatform -eq [Platform]::Windows)
-{
-    return . $PsScriptRoot\find-notepad++.windows.ps1
+if (@($matchingInstalls).Count -gt 0) {
+    return ($matchingInstalls | Select-Object -First 1).DisplayIcon;
 }
-else
-{
-    Write-Host "Notepad++ is not supported on this platform"
-    return $null
-}
+return $null;

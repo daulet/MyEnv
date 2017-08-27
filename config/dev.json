@@ -1,0 +1,41 @@
+{
+    "packages": [
+        {
+            "name": "curl"
+        },
+        {
+            "name": "docker"
+        },
+        {
+            "name": "dotnetcore-sdk"
+        },
+        {
+            "name": "git",
+            "params": "/NoShellIntegration"
+        },
+        {
+            "name": "hyper"
+        },
+        {
+            "name": "notepadplusplus"
+        },
+        {
+            "name": "poshgit"
+        },
+        {
+            "name": "postman"
+        },
+        {
+            "name": "python"
+        },
+        {
+            "name": "redis-64"
+        },
+        {
+            "name": "sourcetree"
+        },
+        {
+            "name": "visualstudiocode"
+        }
+    ]
+}
