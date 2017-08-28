@@ -7,7 +7,7 @@ I'd like to be able to wipe my machine often. I don't like spending time setting
 Choco packages are defined in *dev.json*, pass it in to the installer (requires admin powershell):
 
 ```powershell
-.\install.ps1 .\config\dev.json
+.\install.ps1 .\config\packages\dev.json
 ```
 
 ## Features
@@ -28,7 +28,7 @@ The following tools are automatically installed, with aliases (shortcuts) for ea
 
 * Visual Studio Code (shortcut: 'vs')
 * Notepad++ (shortcut: 'sn', as in 'Show Notepad')
-* See full list in [dev.json](.\config\dev.json)
+* See full list in [dev.json](.\config\packages\dev.json)
 
 ---
 

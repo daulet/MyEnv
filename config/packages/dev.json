@@ -35,6 +35,9 @@
             "name": "sourcetree"
         },
         {
+            "name": "toggl"
+        },
+        {
             "name": "visualstudiocode"
         }
     ]

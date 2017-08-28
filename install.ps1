@@ -61,3 +61,20 @@ else {
     $profileInstall | Out-File $profileFile -Append -Encoding (Get-FileEncoding $profileFile)
     Write-Warning 'MyEnv profile installed. Reload your profile - type . $profile'
 }
+
+# Add script shortcuts to start menu
+
+$startMenuTarget = "$($ENV:APPDATA)\Microsoft\Windows\Start Menu\Programs\MyEnvScripts"
+if (-Not (Test-Path($startMenuTarget)))
+{
+    New-Item -type directory $startMenuTarget
+}
+
+$shell = New-Object -ComObject ("WScript.Shell")
+$scripts = Get-ChildItem "$PsScriptRoot\startup"
+foreach ($script in $scripts) {
+    $shortCut = $shell.CreateShortcut("$startMenuTarget\$($script.Name).lnk")
+    $shortCut.TargetPath = $script.FullName
+    $shortCut.Save()
+}
+
