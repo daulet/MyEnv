@@ -3,6 +3,7 @@
 $config =@(
     "lync",
     "ms-todo://",
+    "$($ENV:ProgramFiles)\Notepad++\notepad++.exe",
     "outlook",
     "$($ENV:APPDATA)\Microsoft\Windows\Start Menu\Programs\Microsoft\reSearch.appref-ms",
     "$($ENV:LOCALAPPDATA)\Microsoft\Teams\current\Teams.exe",

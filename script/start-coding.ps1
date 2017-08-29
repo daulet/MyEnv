@@ -3,6 +3,7 @@
 $config =@(
     "wunderlist://",
     "$($ENV:LOCALAPPDATA)\hyper\Hyper.exe",
+    "$($ENV:ProgramFiles)\Notepad++\notepad++.exe",
     "$($ENV:LOCALAPPDATA)\SourceTree\SourceTree.exe",
     "$($ENV:LOCALAPPDATA)\TogglDesktop\TogglDesktop.exe"
 )
