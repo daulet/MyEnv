@@ -1,0 +1,16 @@
+{
+    "packages": [
+        {
+            "name": "googlechrome"
+        },
+        {
+            "name": "dropbox"
+        },
+        {
+            "name": "spotify"
+        },
+        {
+            "name": "wunderlist"
+        }
+    ]
+}
