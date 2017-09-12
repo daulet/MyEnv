@@ -1,0 +1,21 @@
+{
+    "applications": [
+        {
+            "root": "localappdata",
+            "filePath": "gitkraken\\Update.exe",
+            "argumentList": "--processStart \"gitkraken.exe\""
+        },
+        {
+            "root": "localappdata",
+            "filePath": "hyper\\Hyper.exe"
+        },
+        {
+            "root": "localappdata",
+            "filePath": "TogglDesktop\\TogglDesktop.exe"
+        },
+        {
+            "filePath": "wunderlist://",
+            "comment": "HKEY_CLASSES_ROOT\\Extensions\\ContractId\\Windows.Protocol\\PackageId"
+        }
+    ]
+}
