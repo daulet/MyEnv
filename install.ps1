@@ -19,7 +19,7 @@ if (-Not (Get-Command choco -errorAction SilentlyContinue)) {
 
 $config = Get-Content $configPath | ConvertFrom-Json
 foreach($package in $config.packages) {
-    choco install $package.name $package.params --limit-output --confirm
+    choco install $package.name --params="$($package.params)" --limit-output --confirm
 }
 
 # Add environment variable for this repo's location
