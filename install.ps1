@@ -24,12 +24,12 @@ foreach($package in $config.packages) {
 
 # Add environment variable for this repo's location
 
-Write-Output 'Ensuring MyEnv commands are on the path'
-$myEnvInstallVariableName = "MyEnvInstall"
-$myEnvPath = [Environment]::GetEnvironmentVariable($myEnvInstallVariableName)
-if ($myEnvPath -eq $null -or $myEnvPath -eq '') {
-    Write-Debug "Setting $myEnvInstallVariableName to $PSScriptRoot"
-    [Environment]::SetEnvironmentVariable($myEnvInstallVariableName, $PSScriptRoot, "Machine")
+Write-Output 'Ensuring init commands are on the path'
+$initInstallVariableName = "initInstall"
+$initPath = [Environment]::GetEnvironmentVariable($initInstallVariableName)
+if ($initPath -eq $null -or $initPath -eq '') {
+    Write-Debug "Setting $initInstallVariableName to $PSScriptRoot"
+    [Environment]::SetEnvironmentVariable($initInstallVariableName, $PSScriptRoot, "Machine")
 }
 
 # Create Powershell profile if needed
@@ -44,27 +44,27 @@ if (-Not (Test-Path $profileFile)) {
 $version = "v1"
 
 $profileInstall =
-"# Load profiles from MyEnv: https://github.com/daulet/myenv $version`n" + @'
-$MyEnvProfile = "$env:MyEnvInstall\profile.ps1"
-if (Test-Path($MyEnvProfile)) {
-    Import-Module "$MyEnvProfile"
+"# Load profiles from init: https://github.com/daulet/init $version`n" + @'
+$initProfile = "$env:initInstall\profile.ps1"
+if (Test-Path($initProfile)) {
+    Import-Module "$initProfile"
 }
 '@
 
-$versions = Select-String -Path $profileFile -Pattern "https://github.com/daulet/myenv (\w+)"
+$versions = Select-String -Path $profileFile -Pattern "https://github.com/daulet/init (\w+)"
 if ($versions.Matches.Count -gt 0 -and $versions.Matches[-1].Groups[1].Value -eq $version) {
-    Write-Debug "MyEnv profile is already installed."
+    Write-Debug "init profile is already installed."
 }
 else {
-    Write-Output 'Adding MyEnv to the profile.'
+    Write-Output 'Adding init to the profile.'
     . .\modules\get-fileencoding.ps1
     $profileInstall | Out-File $profileFile -Append -Encoding (Get-FileEncoding $profileFile)
-    Write-Warning 'MyEnv profile installed. Reload your profile - type . $profile'
+    Write-Warning 'init profile installed. Reload your profile - type . $profile'
 }
 
 # Add script shortcuts to start menu
 
-$startMenuTarget = "$($ENV:APPDATA)\Microsoft\Windows\Start Menu\Programs\MyEnvScripts"
+$startMenuTarget = "$($ENV:APPDATA)\Microsoft\Windows\Start Menu\Programs\initScripts"
 if (-Not (Test-Path($startMenuTarget)))
 {
     New-Item -type directory $startMenuTarget

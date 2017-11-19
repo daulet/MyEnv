@@ -1,1 +1,1 @@
-powershell %MyEnvInstall%/script/start-applications.ps1 %MyEnvInstall%/config/applications/work.json
+powershell %initInstall%/script/start-applications.ps1 %initInstall%/config/applications/work.json

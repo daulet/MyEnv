@@ -2,10 +2,10 @@ param (
     [string[]]$expansionPrefixes)
 
 if (Test-Path Function:\TabExpansion) {
-    if (Test-Path Function:\MyEnvTabExpansionBackup) {
-        Remove-Item Function:\MyEnvTabExpansionBackup
+    if (Test-Path Function:\initTabExpansionBackup) {
+        Remove-Item Function:\initTabExpansionBackup
     }
-    Rename-Item Function:\TabExpansion MyEnvTabExpansionBackup
+    Rename-Item Function:\TabExpansion initTabExpansionBackup
 }
 
 # FF is a Fast File Finder. Source: https://github.com/daulet/FastFileFinder
@@ -16,6 +16,7 @@ function TabExpansion($line, $lastWord) {
     $words = $line.Split(' ', [System.StringSplitOptions]::RemoveEmptyEntries)
 
     # Test current directory before kicking off potentially expensive recursive search
+    # TODO expansion should match path, not name, in case of cd-ing with multiple dirs typed out already
     $currentDir = Get-ChildItem
     $prefix = $words[-1].ToLower()
     foreach ($file in $currentDir) {
@@ -31,8 +32,8 @@ function TabExpansion($line, $lastWord) {
         return $paths
     }
     else {
-        if (Test-Path Function:\MyEnvTabExpansionBackup) {
-            MyEnvTabExpansionBackup $line $lastWord
+        if (Test-Path Function:\initTabExpansionBackup) {
+            initTabExpansionBackup $line $lastWord
         }
     }
 }
