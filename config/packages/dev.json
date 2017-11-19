@@ -3,12 +3,7 @@
         {
             "name": "curl"
         },
-        {
-            "name": "docker"
-        },
-        {
-            "name": "dotnetcore-sdk"
-        },
+
         {
             "name": "git",
             "params": "/NoShellIntegration"
@@ -20,6 +15,9 @@
             "name": "hyper"
         },
         {
+            "name": "nodejs"
+        },
+        {
             "name": "notepadplusplus"
         },
         {
@@ -27,9 +25,6 @@
         },
         {
             "name": "postman"
-        },
-        {
-            "name": "python"
         },
         {
             "name": "redis-64"
