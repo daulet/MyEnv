@@ -24,7 +24,7 @@ function global:prompt {
     }
     Write-Host $curPath -ForegroundColor Cyan
 
-    "[$([Math]::Round($stopwatch.Elapsed.TotalMilliseconds)) ms] $(Get-Date -Format HH:MM:ss)$('>' * ($nestedPromptLevel + 1)) "
+    "[$([Math]::Round($stopwatch.Elapsed.TotalMilliseconds)) ms] $(Get-Date -Format HH:mm:ss)$('>' * ($nestedPromptLevel + 1)) "
 
     $LASTEXITCODE = $origLastExitCode
     $stopwatch.Stop()
