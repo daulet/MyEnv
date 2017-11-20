@@ -17,9 +17,11 @@ if (-Not (Get-Command choco -errorAction SilentlyContinue)) {
 
 # Install choco packages
 
-$config = Get-Content $configPath | ConvertFrom-Json
-foreach($package in $config.packages) {
-    choco install $package.name --params="$($package.params)" --limit-output --confirm
+if (-Not [string]::IsNullOrEmpty($configPath)) {
+    $config = Get-Content $configPath | ConvertFrom-Json
+    foreach($package in $config.packages) {
+        choco install $package.name --params="$($package.params)" --limit-output --confirm
+    }
 }
 
 # Add environment variable for this repo's location
@@ -61,6 +63,10 @@ else {
     $profileInstall | Out-File $profileFile -Append -Encoding (Get-FileEncoding $profileFile)
     Write-Warning 'init profile installed. Reload your profile - type . $profile'
 }
+
+# Install posh-git
+
+Install-Module posh-git -Scope CurrentUser
 
 # Add script shortcuts to start menu
 
