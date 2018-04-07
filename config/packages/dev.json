@@ -18,6 +18,9 @@
             "name": "nodejs"
         },
         {
+            "name": "microsoft-build-tools"
+        },
+        {
             "name": "notepadplusplus"
         },
         {
