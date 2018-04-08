@@ -1,5 +1,5 @@
 function prompt {
-    "$(Get-Date -Format HH:mm:ss) $pwd> "
+    "$pwd`r`n$(Get-Date -Format HH:mm:ss) > "
 }
 
 Start-SshAgent -Quiet
