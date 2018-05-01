@@ -34,6 +34,16 @@ if ($initPath -eq $null -or $initPath -eq '') {
     [Environment]::SetEnvironmentVariable($initInstallVariableName, $PSScriptRoot, "Machine")
 }
 
+# Remap CAPSLOCK to Ctrl
+
+$hexified = "00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00".Split(',') | % { "0x$_"};
+$kbLayout = 'HKLM:\System\CurrentControlSet\Control\Keyboard Layout';
+New-ItemProperty -Path $kbLayout -Name "Scancode Map" -PropertyType Binary -Value ([byte[]]$hexified);
+
+# Copy hyper.js config
+
+Copy-Item ..\config\.hyper.js ~/.hyper.js
+
 # Create Powershell profile if needed
 
 $profileFile = "$PROFILE"
@@ -62,25 +72,5 @@ else {
     . .\modules\get-fileencoding.ps1
     $profileInstall | Out-File $profileFile -Append -Encoding (Get-FileEncoding $profileFile)
     Write-Warning 'init profile installed. Reload your profile - type . $profile'
-}
-
-# Install posh-git
-
-Install-Module posh-git -Scope CurrentUser
-
-# Add script shortcuts to start menu
-
-$startMenuTarget = "$($ENV:APPDATA)\Microsoft\Windows\Start Menu\Programs\initScripts"
-if (-Not (Test-Path($startMenuTarget)))
-{
-    New-Item -type directory $startMenuTarget
-}
-
-$shell = New-Object -ComObject ("WScript.Shell")
-$scripts = Get-ChildItem "$PsScriptRoot\startup"
-foreach ($script in $scripts) {
-    $shortCut = $shell.CreateShortcut("$startMenuTarget\$($script.Name).lnk")
-    $shortCut.TargetPath = $script.FullName
-    $shortCut.Save()
 }
 
