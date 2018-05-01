@@ -3,34 +3,18 @@
         {
             "name": "curl"
         },
-
         {
             "name": "git",
             "params": "/NoShellIntegration"
         },
         {
-            "name": "gitkraken"
-        },
-        {
             "name": "hyper"
-        },
-        {
-            "name": "nodejs"
-        },
-        {
-            "name": "microsoft-build-tools"
         },
         {
             "name": "notepadplusplus"
         },
         {
             "name": "postman"
-        },
-        {
-            "name": "redis-64"
-        },
-        {
-            "name": "toggl"
         },
         {
             "name": "visualstudiocode"
