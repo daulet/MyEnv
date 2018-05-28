@@ -1,6 +1,9 @@
 {
     "packages": [
         {
+            "name": "cloc"
+        },
+        {
             "name": "curl"
         },
         {
